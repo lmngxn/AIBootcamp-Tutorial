@@ -114,8 +114,8 @@ def generate_response_based_on_course_details(user_message, product_details):
     ]
 
     response_to_customer = llm.get_completion_by_messages(messages)
-    st.write(response_to_customer)
-    st.write(response_to_customer.split(delimiter))
+    # print(f"Response to Customer: {response_to_customer}")
+    # print(f"Response to Customer: {response_to_customer.split(delimiter)}")
     response_to_customer = response_to_customer.split(delimiter)[-1]
     return response_to_customer
 
