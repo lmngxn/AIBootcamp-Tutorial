@@ -102,7 +102,7 @@ def generate_response_based_on_course_details(user_message, product_details):
     Step 2:{delimiter} <step 2 reasoning>
     Step 3:{delimiter} <step 3 response to customer>
 
-    Make sure to include {delimiter} to separate every step.
+    Make sure to include {delimiter} to separate every step. Do not include a delimiter at the end of your response.
     """
 
     messages =  [
@@ -113,6 +113,8 @@ def generate_response_based_on_course_details(user_message, product_details):
     ]
 
     response_to_customer = llm.get_completion_by_messages(messages)
+    # print(f"Response to Customer: {response_to_customer}")
+    # print(f"Response to Customer: {response_to_customer.split(delimiter)}")
     response_to_customer = response_to_customer.split(delimiter)[-1]
     return response_to_customer
 
@@ -121,11 +123,11 @@ def process_user_message(user_input):
 
     # Process 1: If Courses are found, look them up
     category_n_course_name = identify_category_and_courses(user_input)
-    print("category_n_course_name : ", category_n_course_name)
+    # print("category_n_course_name : ", category_n_course_name)
 
     # Process 2: Get the Course Details
     course_details = get_course_details(category_n_course_name)
-    print("course_details : ", course_details)
+    # print("course_details : ", course_details)
 
     # Process 3: Generate Response based on Course Details
     reply = generate_response_based_on_course_details(user_input, course_details)
