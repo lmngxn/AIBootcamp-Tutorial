@@ -1,5 +1,6 @@
 import json
 from helper_functions import llm
+import streamlit as st
 
 category_n_course = {'Programming and Development': ['Web Development Bootcamp',
                                                           'Introduction to Cloud Computing',
@@ -113,8 +114,8 @@ def generate_response_based_on_course_details(user_message, product_details):
     ]
 
     response_to_customer = llm.get_completion_by_messages(messages)
-    # print(f"Response to Customer: {response_to_customer}")
-    # print(f"Response to Customer: {response_to_customer.split(delimiter)}")
+    st.write(response_to_customer)
+    st.write(response_to_customer.split(delimiter))
     response_to_customer = response_to_customer.split(delimiter)[-1]
     return response_to_customer
 
